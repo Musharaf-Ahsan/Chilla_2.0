@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>waste_disposal.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="team-enterpernures"><strong>Team Enterpernures</strong></h1>
+<h2 id="exploratory-data-analysis-co2-emissions-from-different-countries"><strong>Exploratory Data Analysis (CO2 Emissions from Different Countries)</strong></h2>
+<p>Data Source: <a href="https://github.com/Z-Unlocked/Unlocked_Challenge_1">Waste Disposal</a></p>
+<h2 id="introduction"><strong>Introduction</strong></h2>
+<p>In recent years climate change &amp; global warming has gained significant momentum. The one key sources of CO2 emissions has been from countries. In this project the CO2 emissions from all over countries will be investigated.</p>
+<h2 id="about-the-dataset"><strong>About the Dataset:</strong></h2>
+<ul>
+<li>Provided by the <a href="https://github.com/Z-Unlocked/Unlocked_Challenge_1">HP Z-Unlocked Challenge</a>, the dataset used in this EDA has records covering approx. 30 years from 1990 to 2020.  It holds a breakdown of CO2 emissions for a number of countries . As it will become apparent, CO2 emissions from country to country is increasing day by day and it is in inclined plan form.</li>
+</ul>
+<h2 id="methodolgy"><strong>Methodolgy:</strong></h2>
+<ul>
+<li>First of all whole data was explored. Redundent Data was removed to simplify the analysis. There were no missing values however distribution of data is not evenly distributed due to multiple reasons i.e CO2 emission fluctuate in differents countries over years and years and different parts of the globe.</li>
+<li>We Divide our EDA into two parts.
+<ul>
+<li>Part 1 is EDA on whole data</li>
+<li>Part 2 is EDA on Subcontinent Countries only</li>
+</ul>
+</li>
+</ul>
+<h2 id="part-1-eda-on-whole-dataset"><strong>Part-1: EDA on Whole DataSet</strong></h2>
+<h3 id="step-1-importing-libraries"><strong>Step-1: Importing Libraries</strong></h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns
+</div></code></pre>
+<h3 id="step-2-importing-dataset"><strong>Step-2: Importing Dataset</strong></h3>
+<pre class="hljs"><code><div>df = pd.read_csv(<span class="hljs-string">'waste_disposal_data_11-29-2021.csv'</span>)
+df.head()
+</div></code></pre>
+<blockquote>
+<p><strong>Output :</strong></p>
+</blockquote>
+<p>Domain Code Domain Area Code (ISO3) Area Element Code Element Item Code Item Year Code Year Unit Value Flag Flag Description
+0 GW Waste Disposal AFG Afghanistan 7273 Emissions (CO2) 6990 Incineration 1990 1990 kilotonnes 0.0 Fc Calculated data
+1 GW Waste Disposal AFG Afghanistan 7273 Emissions (CO2) 6990 Incineration 1991 1991 kilotonnes 0.0 Fc Calculated data
+2 GW Waste Disposal AFG Afghanistan 7273 Emissions (CO2) 6990 Incineration 1992 1992 kilotonnes 0.0 Fc Calculated data
+3 GW Waste Disposal AFG Afghanistan 7273 Emissions (CO2) 6990 Incineration 1993 1993 kilotonnes 0.0 Fc Calculated data
+4 GW Waste Disposal AFG Afghanistan 7273 Emissions (CO2) 6990 Incineration 1994 1994 kilotonnes 0.0 Fc Calculated data</p>
+<h3 id="step-3-data-shape"><strong>Step-3: Data Shape</strong></h3>
+<blockquote>
+<p>Shape function tells us number of Observations and columns.
+In this dataset we have 14 columns and 46131 records or obervations</p>
+</blockquote>
+<pre class="hljs"><code><div>row, col=df.shape
+print(<span class="hljs-string">'Total number of observations/rows/entries:'</span>, row)
+print(<span class="hljs-string">'Total number of columns:'</span>, col)
+</div></code></pre>
+<blockquote>
+<p><strong>Output :</strong></p>
+</blockquote>
+<pre class="hljs"><code><div>Number of Rows       =  <span class="hljs-number">6238</span>
+Number of Columns    =  <span class="hljs-number">14</span>
+</div></code></pre>
+<h3 id="step-4-data-structure"><strong>Step-4: Data Structure</strong></h3>
+<blockquote>
+<p>Extracting Basic Dataset Information:</p>
+<ul>
+<li>Our dataset contain
+<ul>
+<li>RangeIndex: 0 - to - 6238</li>
+<li>Total Columns: 14</li>
+<li>No of  Non-Null Values: Zero</li>
+<li>Dtypes: float64(1), int64(4), object(9)</li>
+<li>memory usage: 682.4+ KB</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<pre class="hljs"><code><div>df.info()
+</div></code></pre>
+<blockquote>
+<p><strong>Output :</strong></p>
+</blockquote>
+<pre class="hljs"><code><div>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> '<span class="hljs-title">pandas</span>.<span class="hljs-title">core</span>.<span class="hljs-title">frame</span>.<span class="hljs-title">DataFrame</span>'&gt;
+<span class="hljs-title">RangeIndex</span>:</span> <span class="hljs-number">6238</span> entries, <span class="hljs-number">0</span> to <span class="hljs-number">6237</span>
+Data columns (total <span class="hljs-number">14</span> columns):
+ <span class="hljs-comment">#   Column            Non-Null Count  Dtype  </span>
+---  ------            --------------  -----  
+ <span class="hljs-number">0</span>   Domain Code       <span class="hljs-number">6238</span> non-null   object 
+ <span class="hljs-number">1</span>   Domain            <span class="hljs-number">6238</span> non-null   object 
+ <span class="hljs-number">2</span>   Area Code (ISO3)  <span class="hljs-number">6238</span> non-null   object 
+ <span class="hljs-number">3</span>   Area              <span class="hljs-number">6238</span> non-null   object 
+ <span class="hljs-number">4</span>   Element Code      <span class="hljs-number">6238</span> non-null   int64  
+ <span class="hljs-number">5</span>   Element           <span class="hljs-number">6238</span> non-null   object 
+ <span class="hljs-number">6</span>   Item Code         <span class="hljs-number">6238</span> non-null   int64  
+ <span class="hljs-number">7</span>   Item              <span class="hljs-number">6238</span> non-null   object 
+ <span class="hljs-number">8</span>   Year Code         <span class="hljs-number">6238</span> non-null   int64  
+ <span class="hljs-number">9</span>   Year              <span class="hljs-number">6238</span> non-null   int64  
+ <span class="hljs-number">10</span>  Unit              <span class="hljs-number">6238</span> non-null   object 
+ <span class="hljs-number">11</span>  Value             <span class="hljs-number">6238</span> non-null   float64
+ <span class="hljs-number">12</span>  Flag              <span class="hljs-number">6238</span> non-null   object 
+ <span class="hljs-number">13</span>  Flag Description  <span class="hljs-number">6238</span> non-null   object 
+dtypes: float64(<span class="hljs-number">1</span>), int64(<span class="hljs-number">4</span>), object(<span class="hljs-number">9</span>)
+memory usage: <span class="hljs-number">682.4</span>+ KB
+</div></code></pre>
+<h3 id="step-5-finding-missing-values"><strong>Step-5: Finding Missing Values</strong></h3>
+<blockquote>
+<p>DataSet is cleaned as far as missing values are concerned</p>
+</blockquote>
+<pre class="hljs"><code><div>df.isnull().sum()
+</div></code></pre>
+<blockquote>
+<p><strong>Output :</strong></p>
+</blockquote>
+<pre class="hljs"><code><div>Domain Code         <span class="hljs-number">0</span>
+Domain              <span class="hljs-number">0</span>
+Area Code (ISO3)    <span class="hljs-number">0</span>
+Area                <span class="hljs-number">0</span>
+Element Code        <span class="hljs-number">0</span>
+Element             <span class="hljs-number">0</span>
+Item Code           <span class="hljs-number">0</span>
+Item                <span class="hljs-number">0</span>
+Year Code           <span class="hljs-number">0</span>
+Year                <span class="hljs-number">0</span>
+Unit                <span class="hljs-number">0</span>
+Value               <span class="hljs-number">0</span>
+Flag                <span class="hljs-number">0</span>
+Flag Description    <span class="hljs-number">0</span>
+dtype: int64
+</div></code></pre>
+<blockquote>
+<p>DataSet is cleaned as far as missing values are concerned in percentage</p>
+</blockquote>
+<pre class="hljs"><code><div>df.isnull().sum() / df.shape[<span class="hljs-number">0</span>] * <span class="hljs-number">100</span>
+</div></code></pre>
+<blockquote>
+<p><strong>Output :</strong></p>
+</blockquote>
+<pre class="hljs"><code><div>Domain Code         <span class="hljs-number">0.0</span>
+Domain              <span class="hljs-number">0.0</span>
+Area Code (ISO3)    <span class="hljs-number">0.0</span>
+Area                <span class="hljs-number">0.0</span>
+Element Code        <span class="hljs-number">0.0</span>
+Element             <span class="hljs-number">0.0</span>
+Item Code           <span class="hljs-number">0.0</span>
+Item                <span class="hljs-number">0.0</span>
+Year Code           <span class="hljs-number">0.0</span>
+Year                <span class="hljs-number">0.0</span>
+Unit                <span class="hljs-number">0.0</span>
+Value               <span class="hljs-number">0.0</span>
+Flag                <span class="hljs-number">0.0</span>
+Flag Description    <span class="hljs-number">0.0</span>
+dtype: float64
+</div></code></pre>
+<h3 id="step-6-summary-statistics"><strong>Step-6: Summary Statistics</strong></h3>
+<pre class="hljs"><code><div>df.describe()
+</div></code></pre>
+<blockquote>
+<p><strong>Output :</strong></p>
+</blockquote>
+<p>Element Code Item Code Year Code Year Value
+count 6238.0 6238.0 6238.000000 6238.000000 6238.000000
+mean 7273.0 6990.0 2004.677300 2004.677300 202.675467
+std 0.0 0.0 8.603289 8.603289 1066.676986
+min 7273.0 6990.0 1990.000000 1990.000000 0.000000
+25% 7273.0 6990.0 1997.000000 1997.000000 0.000000
+50% 7273.0 6990.0 2005.000000 2005.000000 0.652579
+75% 7273.0 6990.0 2012.000000 2012.000000 30.517272
+max 7273.0 6990.0 2019.000000 2019.000000 11151.696408</p>
+<h3 id="step-7-value-counts"><strong>Step-7: Value Counts</strong></h3>
+<pre class="hljs"><code><div>df.Value.value_counts()
+</div></code></pre>
+<blockquote>
+<p><strong>Output :</strong></p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-number">0.000000</span>     <span class="hljs-number">2828</span>
+<span class="hljs-number">17.356301</span>       <span class="hljs-number">1</span>
+<span class="hljs-number">17.343147</span>       <span class="hljs-number">1</span>
+<span class="hljs-number">17.324444</span>       <span class="hljs-number">1</span>
+<span class="hljs-number">17.311169</span>       <span class="hljs-number">1</span>
+             ... 
+<span class="hljs-number">47.010034</span>       <span class="hljs-number">1</span>
+<span class="hljs-number">47.179100</span>       <span class="hljs-number">1</span>
+<span class="hljs-number">47.292824</span>       <span class="hljs-number">1</span>
+<span class="hljs-number">46.997779</span>       <span class="hljs-number">1</span>
+<span class="hljs-number">35.841750</span>       <span class="hljs-number">1</span>
+Name: Value, Length: <span class="hljs-number">3411</span>, dtype: int64
+
+```python
+<span class="hljs-comment"># unique values in each column</span>
+df.nunique
+&gt; **Output :**
+
+```python
+Domain Code            <span class="hljs-number">1</span>
+Domain                 <span class="hljs-number">1</span>
+Area Code (ISO3)     <span class="hljs-number">217</span>
+Area                 <span class="hljs-number">217</span>
+Element Code           <span class="hljs-number">1</span>
+Element                <span class="hljs-number">1</span>
+Item Code              <span class="hljs-number">1</span>
+Item                   <span class="hljs-number">1</span>
+Year Code             <span class="hljs-number">30</span>
+Year                  <span class="hljs-number">30</span>
+Unit                   <span class="hljs-number">1</span>
+Value               <span class="hljs-number">3411</span>
+Flag                   <span class="hljs-number">2</span>
+Flag Description       <span class="hljs-number">2</span>
+dtype: int64
+</div></code></pre>
+<h3 id="step-8-feature-selection"><strong>Step-8: Feature Selection</strong></h3>
+<ol>
+<li>Domain Code having GW  Global Warming value only</li>
+<li>Domain having Waste disposal value only</li>
+<li>Area Code (ISO3) codes of different countries</li>
+<li>Area representing different countries</li>
+<li>Element Code representing code of CO2 as seven thousand two hundred seventy-three (7273)</li>
+<li>Element having only one value as Emissions (CO2)</li>
+<li>Item Code representing items codes that are only one</li>
+<li>Item representing Incineration  means the destruction of something in progress</li>
+<li>Year Code representing different years codes</li>
+<li>Year representing different years</li>
+<li>Unit representing only one value kilotons</li>
+<li>Value representing the number of CO2 emissions in unit kilotons</li>
+<li>Flag representing flag short name that is only two</li>
+<li>Flag Description represents two types of description over the flag</li>
+</ol>
+<h2 id="clean-data---exclude-unnecessary-data-improved-readability"><strong>Clean data - exclude unnecessary data improved readability</strong></h2>
+<pre class="hljs"><code><div>df.drop([<span class="hljs-string">'Domain Code'</span>, <span class="hljs-string">'Domain'</span>, <span class="hljs-string">'Element Code'</span>, <span class="hljs-string">'Element'</span>, <span class="hljs-string">'Item Code'</span>, <span class="hljs-string">'Item'</span>, <span class="hljs-string">'Unit'</span>,<span class="hljs-string">'Flag'</span>,<span class="hljs-string">'Flag Description'</span>], axis=<span class="hljs-number">1</span>, inplace=<span class="hljs-literal">True</span>)
+</div></code></pre>
+<h2 id="label-encoding-to-get-a-clear-picture-of-data"><strong>Label encoding to get a clear picture of data</strong></h2>
+<p>There are some columns which are not in use but to get a really clear picture lets use those as well.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> LabelEncoder
+label = LabelEncoder()
+df[<span class="hljs-string">'Domain'</span>] = label.fit_transform(df[<span class="hljs-string">'Domain'</span>])
+df[<span class="hljs-string">'Domain Code'</span>] = label.fit_transform(df[<span class="hljs-string">'Domain Code'</span>])
+df[<span class="hljs-string">'Area Code (ISO3)'</span>] = label.fit_transform(df[<span class="hljs-string">'Area Code (ISO3)'</span>])
+df[<span class="hljs-string">'Area'</span>] = label.fit_transform(df[<span class="hljs-string">'Area'</span>])
+df[<span class="hljs-string">'Element'</span>] = label.fit_transform(df[<span class="hljs-string">'Element'</span>])
+df[<span class="hljs-string">'Item'</span>] = label.fit_transform(df[<span class="hljs-string">'Item'</span>])
+df[<span class="hljs-string">'Unit'</span>] = label.fit_transform(df[<span class="hljs-string">'Unit'</span>])
+df[<span class="hljs-string">'Flag'</span>] = label.fit_transform(df[<span class="hljs-string">'Flag'</span>])
+df[<span class="hljs-string">'Flag Description'</span>] = label.fit_transform(df[<span class="hljs-string">'Flag Description'</span>])
+</div></code></pre>
+<h3 id="step-9-distribution-of-data"><strong>Step-9: Distribution of Data</strong></h3>
+<blockquote>
+<p>The data is extremely broadly distributed with many values in the range of 0 to 8.415818 with a strong skew to the right and kurtosis as 0 to 75.170198.</p>
+</blockquote>
+<h4 id="before-removing-outliers"><strong>Before removing outliers</strong></h4>
+<p><img src="outliers b.png" alt=""></p>
+<h4 id="after-removing-outliers"><strong>After removing outliers</strong></h4>
+<h4 id="with-interquartile-range-technique"><strong>With Interquartile range technique</strong></h4>
+<h5 id="there-are-some-outliers-so-we-are-going-to-taking-those-off-from-data-set"><strong>there are some outliers so we are going to taking those off from data set</strong></h5>
+<pre class="hljs"><code><div>def mod_outlier(df):
+    col_vals = df.columns
+    df1 = df.copy()
+    df = df._get_numeric_data()
+
+    q1 = df.quantile(0.25)
+    q3 = df.quantile(0.75)
+
+    iqr = q3 - q1
+
+    lower_bound = q1 - (1.5 * iqr)
+    upper_bound = q3 + (1.5 * iqr)
+    for col in col_vals:
+        for i in range(0, len(df[col])):
+            if df[col][i] &lt; lower_bound[col]:
+                df[col][i] = lower_bound[col]
+
+            if df[col][i] &gt; upper_bound[col]:
+                df[col][i] = upper_bound[col]
+
+    for col in col_vals:
+        df1[col] = df[col]
+
+        return(df1)
+</div></code></pre>
+<p><img src="outliers_a.png" alt="image"></p>
+<h2 id="step-9-visualization-of-data"><strong>Step-9: Visualization of Data</strong></h2>
+<h4 id="visualization-of-co2-emissions-over-the-years"><strong>Visualization of CO2 emissions over the years</strong></h4>
+<h4 id="before-label-encoding-and-outlier-removal">Before label encoding and outlier removal</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Data Distribution by top 30 countries</span>
+a = df.groupby([<span class="hljs-string">"Area"</span>]).sum().sort_values(
+    by=[<span class="hljs-string">"Value"</span>], ascending=<span class="hljs-literal">False</span>).head(<span class="hljs-number">30</span>)
+a
+plt.figure(figsize=(<span class="hljs-number">5</span>, <span class="hljs-number">3</span>), dpi=<span class="hljs-number">150</span>, linewidth=<span class="hljs-number">2</span>)
+sns.barplot(x=a.index, y=<span class="hljs-string">'Value'</span>, data=a)
+plt.xticks(rotation=<span class="hljs-number">90</span>)
+</div></code></pre>
+<p><img src="1.png" alt="image"></p>
+<h3 id="boxplot-of-co2-emissions"><strong>Boxplot of CO2 emissions</strong></h3>
+<pre class="hljs"><code><div>plt.figure(figsize=(5, 3), dpi=150, linewidth=2)
+sns.barplot(x=s.index, y='Value', data=s)
+plt.xticks(rotation=90)
+plt.show()
+</div></code></pre>
+<p><img src="2.png" alt="image"></p>
+<h1 id="top-3-countries-emissioning-with-graphs"><strong>Top 3 countries Emissioning with graphs</strong></h1>
+<h2 id="ratio-of-co2-over-different-years-by-china"><strong>Ratio of CO2 over different years by China</strong></h2>
+<pre class="hljs"><code><div>plt.figure(figsize = (20,10))
+sns.lineplot(x = &quot;Year&quot;, y = &quot;Value&quot;, data = df[df[&quot;Area&quot;]==&quot;China&quot;])
+plt.show()
+
+</div></code></pre>
+<p><img src="3.png" alt="image"></p>
+<h2 id="ratio-of-co2-over-different-years-by-japan"><strong>Ratio of CO2 over different years by Japan</strong></h2>
+<pre class="hljs"><code><div>plt.figure(figsize=(20, 10))
+sns.lineplot(x=&quot;Year&quot;, y=&quot;Value&quot;, data=df[df[&quot;Area&quot;] == &quot;Japan&quot;])
+plt.show()
+</div></code></pre>
+<p><img src="4.png" alt="image"></p>
+<h2 id="ratio-of-co2-over-different-years-by-china-mainland"><strong>Ratio of CO2 over different years by China, mainland</strong></h2>
+<pre class="hljs"><code><div>plt.figure(figsize=(20, 10))
+sns.lineplot(x=&quot;Year&quot;, y=&quot;Value&quot;, data=df[df[&quot;Area&quot;] == &quot;China, mainland&quot;])
+plt.show()
+</div></code></pre>
+<p><img src="5.png" alt="image"></p>
+<h2 id="after-label-encoding-and-outlier-removal"><strong>After label encoding and outlier removal</strong></h2>
+<p>visualization of CO2 emissions over the different countries.</p>
+<pre class="hljs"><code><div>countries = df['Area'].unique()
+sns.set_style(&quot;whitegrid&quot;)
+plt.figure(figsize=(15, 15))
+
+for country in countries:
+    sns.distplot(df[[&quot;Area&quot;,&quot;Value&quot;]])
+</div></code></pre>
+<p><img src="6.png" alt="image"></p>
+<h1 id="part-2-eda-on-subcontinent-that-include-pakistan-india-and-bangladesh"><strong>Part-2: EDA on Subcontinent that include Pakistan, India, and Bangladesh</strong></h1>
+<blockquote>
+<p><strong>CO2 Emissions from Subcontinent</strong></p>
+</blockquote>
+<p>In this section subcontinent countries will be examined. the list of countries are as follows:</p>
+<ul>
+<li><strong>Bangladesh</strong></li>
+<li><strong>India</strong></li>
+<li><strong>Pakistan</strong></li>
+</ul>
+<h2 id="feature-selection-and-data-insights"><strong>Feature Selection and Data Insights</strong></h2>
+<p><strong>Selecting Subcontinents countries</strong></p>
+<pre class="hljs"><code><div>df_sub = df[df[&quot;Area&quot;].isin([&quot;India&quot;, &quot;Pakistan&quot;, 'Bangladesh'])]
+df_sub.head()
+</div></code></pre>
+<p>Domain Code Domain Area Code (ISO3) Area Element Code Element Item Code Item Year Code Year Unit Value Flag Flag Description
+446 GW Waste Disposal BGD Bangladesh 7273 Emissions (CO2) 6990 Incineration 1990 1990 kilotonnes 46.863842 Fc Calculated data
+447 GW Waste Disposal BGD Bangladesh 7273 Emissions (CO2) 6990 Incineration 1991 1991 kilotonnes 46.824124 Fc Calculated data
+448 GW Waste Disposal BGD Bangladesh 7273 Emissions (CO2) 6990 Incineration 1992 1992 kilotonnes 46.870611 Fc Calculated data
+449 GW Waste Disposal BGD Bangladesh 7273 Emissions (CO2) 6990 Incineration 1993 1993 kilotonnes 46.957732 Fc Calculated data
+450 GW Waste Disposal BGD Bangladesh 7273 Emissions (CO2) 6990 Incineration 1994 1994 kilotonnes 46.992608 Fc Calculated data</p>
+<h2 id="visualizing-subcontinents-countries-role-in-co2-emissions"><strong>Visualizing Subcontinents Countries Role in CO2 emissions</strong></h2>
+<h4 id="study-each-subcontinent-country-and-their-comparison">Study each subcontinent Country and their Comparison.</h4>
+<h2 id="bangladesh"><strong>Bangladesh</strong></h2>
+<pre class="hljs"><code><div>df_sub[df_sub[<span class="hljs-string">"Area"</span>]==<span class="hljs-string">"Bangladesh"</span>].groupby(<span class="hljs-string">"Year"</span>)[<span class="hljs-string">"Value"</span>].mean().plot(kind=<span class="hljs-string">"bar"</span>)
+</div></code></pre>
+<p><img src="b.png" alt="image"></p>
+<h2 id="india"><strong>India</strong></h2>
+<pre class="hljs"><code><div>df_sub[df_sub[<span class="hljs-string">"Area"</span>]==<span class="hljs-string">"India"</span>].groupby(<span class="hljs-string">"Year"</span>)[<span class="hljs-string">"Value"</span>].mean().plot(kind=<span class="hljs-string">"bar"</span>)
+</div></code></pre>
+<p><img src="i.png" alt="image"></p>
+<h2 id="visualisation-for-indias-energy-usage-increase-over-the-years"><strong>visualisation for india's energy usage increase over the years</strong></h2>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">20</span>, <span class="hljs-number">10</span>))
+sns.lineplot(x=<span class="hljs-string">"Year"</span>, y=<span class="hljs-string">"Value"</span>, data=df_sub[df_sub[<span class="hljs-string">"Area"</span>] == <span class="hljs-string">"India"</span>])
+plt.show()
+</div></code></pre>
+<p><img src="i2.png" alt="image"></p>
+<h2 id="pakistan"><strong>Pakistan</strong></h2>
+<pre class="hljs"><code><div>df_sub[df_sub[<span class="hljs-string">"Area"</span>]==<span class="hljs-string">"Pakistan"</span>].groupby(<span class="hljs-string">"Year"</span>)[<span class="hljs-string">"Value"</span>].mean().plot(kind=<span class="hljs-string">"bar"</span>)
+</div></code></pre>
+<p><img src="p.png" alt="image"></p>
+<h2 id="combine"><strong>Combine</strong></h2>
+<pre class="hljs"><code><div>df_sub.groupby([<span class="hljs-string">'Area'</span>, <span class="hljs-string">'Item'</span>])[<span class="hljs-string">'Value'</span>].mean(
+).unstack().plot(kind=<span class="hljs-string">'barh'</span>, figsize=(<span class="hljs-number">15</span>, <span class="hljs-number">10</span>))
+</div></code></pre>
+<p><img src="compare.png" alt="image"></p>
+<pre class="hljs"><code><div>plt.figure(figsize=(<span class="hljs-number">26</span>, <span class="hljs-number">8</span>))
+sns.lineplot(x=<span class="hljs-string">"Year"</span>, y=<span class="hljs-string">"Value"</span>, data=df_sub)
+plt.show()
+</div></code></pre>
+<p><img src="com.png" alt="image"></p>
+<h2 id="conclusion"><strong>Conclusion:</strong></h2>
+<blockquote>
+<p>Highest Emission Countries:
+China  2020, China, mainland   2020, Japan  2013</p>
+</blockquote>
+<ol>
+<li>Lowest Emission (almost 0k):
+Vanuatu, Uganda, Thailand, South Africa, Senegal, Romania, Papua New Guinea, Nicaragua, Montenegro, Malawi, Lao People’s Democratic Republic, Kazakhstan, Israel, Hungary, Guam, Fiji, Denmark, Burkina Faso, Belgium Luxembourg, Azerbaijan,</li>
+<li>Highest Emission (8k – 12k):
+Orange Albania, Armenia, Brazil, Chile, China, Macao SAR, Czechia, El Salvador, Japan, Lithuania, Mexico, Nepal, Oman, Samoa, Slovakia, Sweden, Turkey, United States Virgin Islands, Zimbabwe, China
+Purple  Algeria, Austria, Belgium, Bhutan, Bulgaria, Canada, Democratic Republic of Congo, Faroe Islands, Honduras, Isle of Man, Libya, Mauritania, Mongolia, New Zealand, Panama, Republic of Moldova, Saudi Arabia, Somalia, Tajikistan, Tuvalu, Uzbekistan
+Pink  American Samoa, Bahamas, Bolivia, Colombia, Djibouti, Eritrea, Finland, Gibraltar, Guatemala, Iceland, Kenya, Latvia, Liechtenstein, Malaysia, Morocco, Niger, Paraguay, Russian Federation, Serbia, South Sudan, Timor-Leste, Ukraine, Venezuela</li>
+<li>Just for knowledge:
+Pakistan (Green)  between 100 and 1300
+India (silver) almost 2000
+Bangladesh (light green) almost 800 to 1000
+Years Of Emission:
+Emission is increasing day by day, but the highest emission was recorded in 2020 by China</li>
+</ol>
+<h2 id="suggestions"><strong>Suggestions:</strong></h2>
+<ul>
+<li>The world is releasing bulk amount of gas in atmosphere, so we need to take care of our atmospher and because it has already caused global warming as well that is current issue of the world.</li>
+<li>We have records of different courtiers and according to that, we may at least give them a warning or so to stop huge bulk of emission, do it but just some restrictions or we going to loss this world</li>
+<li>You can take recent years data and try to use different samples and different techniques. Change your perception about the comparison methodology</li>
+</ul>
+
+</body>
+</html>

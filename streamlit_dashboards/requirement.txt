@@ -1,0 +1,12 @@
+streamlit
+numpy
+pandas
+seaborn
+matplotlib
+plotly
+scikit-learn
+tensorflow
+openpy
+streamlit-drawable-canvas
+opencv-python
+keras
